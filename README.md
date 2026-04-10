@@ -30,20 +30,6 @@ Componentele au fost selectate pentru a asigura un consum redus de energie și d
 
 ---
 
-## 3. Funcționalitate Hardware
-### Module și Componente
-* **Sistemul de Procesare:** Utilizarea SoC-ului nRF52840 permite comunicația Bluetooth Low Energy (BLE).
-* **Management Energie:** Include un circuit de încărcare BQ25180 conectat prin I2C și un convertor DC/DC RT6160A pentru a genera 3.3V stabil.
-* **E-Paper Drive:** Un circuit dedicat ce utilizează MOSFET-uri (DMG2305, S11308) pentru a genera tensiunile necesare refresh-ului ecranului E-Ink.
-* **Protecție:** Portul USB-C este protejat împotriva descărcărilor electrostatice prin cipul USBLC6-2SC6Y.
-
-### Calcule de Consum
-* **Idle:** Estimare ~3-5 µA (MCU în sleep mode, E-Paper nu consumă curent pentru menținerea imaginii).
-* **Transmisie BLE:** ~5 mA în timpul pachetelor radio.
-* **Autonomie:** Proiectat pentru o durată de viață a bateriei de minim 14 zile la o utilizare normală.
-
----
-
 ## 4. Alocare Pini nRF52840 (Pinout Mapping)
 Alocarea pinilor a fost optimizată pentru a facilita rutarea pe cele 4 straturi ale PCB-ului.
 
