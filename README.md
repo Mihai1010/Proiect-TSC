@@ -33,8 +33,8 @@ Arhitectura sistemului este centrată pe SoC-ul nRF52840, care gestionează proc
 | | **SON/TDFN** | U3 (MAX17048) | [JLCPCB](https://jlcpcb.com/partdetail/2777647-MAX17048GT10/C2682616) | [DataSheet](https://www.analog.com/media/en/technical-documentation/data-sheets/MAX17048-MAX17049.pdf) |
 | **Diodes/FETs** | **SOD-123** | D2, D4, D5 | [JLCPCB](https://jlcpcb.com/partdetail/ST_Semtech-1N4148W/C81598) | [DataSheet](https://www.mccsemi.com/pdf/Products/1N4148W(SOD-123).pdf) |
 | | **SOT-23** | Q1 (DMG2305) | [JLCPCB](https://jlcpcb.com/partdetail/TECHPUBLIC-DMG2305UX/C2940629) | [DataSheet](https://www.mouser.com/datasheet/2/115/DMG2305UX-266242.pdf) |
-| | **SOT-323** | Q3 (SI1308EDL) | [JLCPCB](https://jlcpcb.com/partdetail/VishayIntertech-SI1308EDL_T1GE3/C469327) | [DataSheet]([https://www.vishay.com](https://www.vishay.com/docs/63399/si1308edl.pdf)) |
-| | **SOT-23-6** | D3 (USBLC6) | [JLCPCB](https://jlcpcb.com/partdetail/STMicroelectronics-USBLC62SC6/C7519) | [DataSheet]([https://www.st.com](https://www.st.com/resource/en/datasheet/usblc6-2.pdf)) |
+| | **SOT-323** | Q3 (SI1308EDL) | [JLCPCB](https://jlcpcb.com/partdetail/VishayIntertech-SI1308EDL_T1GE3/C469327) | [DataSheet](https://www.vishay.com](https://www.vishay.com/docs/63399/si1308edl.pdf)) |
+| | **SOT-23-6** | D3 (USBLC6) | [JLCPCB](https://jlcpcb.com/partdetail/STMicroelectronics-USBLC62SC6/C7519) | [DataSheet](https://www.st.com](https://www.st.com/resource/en/datasheet/usblc6-2.pdf)) |
 | **Connectors** | **FPC 24** | J1 | [JLCPCB](https://jlcpcb.com/partdetail/MOLEX-5034802400/C122434) | [DataSheet](https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/503/503480/5034802400_sd.pdf?inline) |
 | | **USB-C** | J4 | [JLCPCB](https://jlcpcb.com/partdetail/EverlightElec-16_213SDRC_S530_A3TR8/C71911) | [DataSheet](https://www.endrich.com/Datenbl%C3%A4tter/Lichtl%C3%B6sungen/Everlight/Single%20Color%20LED/16-213SDRCS530-A3TR8.pdf) |
 | | **Tag-Connect**| J2 (TC2030) | [JLCPCB](https://jlcpcb.com/partdetail/MicrochipTech-TC2030_CLIP3PACK/C5444772) | [DataSheet](https://www.farnell.com/datasheets/2818736.pdf) |
