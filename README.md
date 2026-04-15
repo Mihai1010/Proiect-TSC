@@ -5,20 +5,15 @@
 ---
 
 ## 1. Diagramă Bloc
-Arhitectura sistemului este centrată pe SoC-ul nRF52840, care gestionează procesarea datelor, interfața cu utilizatorul și comunicația wireless.
 
 
-**Descriere Flux:**
-* **Procesare:** nRF52840 (MCU) comunică prin I2C cu senzorii și perifericele.
-* **Alimentare:** Gestionată de BQ25180 (Charger) și monitorizată de MAX17048 (Fuel Gauge).
-* **Afișaj:** Ecran E-Paper controlat prin circuitul de boost dedicat.
-* **Interfață:** 3 butoane pentru navigare și un motor haptic pentru feedback.
+
 
 ---
 
 ## 2. Bill of Materials (BOM)
 
-| Categorie | Capsulă | Designator | JLC Part Number | Datasheet |
+| Categorie | Capsulă | Denumire Schematic | JLC | Datasheet |
 | :--- | :--- | :--- | :--- | :--- |
 | **Capacitors** | **0201** | C1, C2, C3, C4, C5, C7, C8, C9, C11, C12, C13, C16, C17, C18, C19, C22, C23, C27, C29, C30, C31, C32, C34, C37, C38, C42, EPD_C5 | [JLCPCB](https://jlcpcb.com/partdetail/16204-CL05A106MQ5NUNC/C15525) | [DataSheet](https://www.jotrin.jp/userfiles/downloadfile/CL05A106MQ5NUNC/CL05A106MQ5NUNC.pdf) |
 | | **0402** | C6, C14, C15, C20, C21, C24, C25, C33, C39, C43, EPD_C1, EPD_C2, EPD_C6, EPD_C7, EPD_C8, EPD_C9, EPD_C10, EPD_C11, EPD_C12, C2-EP-DR1 | [JLCPCB](https://jlcpcb.com/partdetail/C9900006337) | [DataSheet](https://jlcpcb.com/parts) |
@@ -45,12 +40,42 @@ Arhitectura sistemului este centrată pe SoC-ul nRF52840, care gestionează proc
 
 ---
 
-## 3. Alocare Pini nRF52840 (Pinout Mapping)
-Alocarea pinilor a fost optimizată pentru a facilita rutarea pe cele 4 straturi ale PCB-ului.
+## 3. Descrierea Funcționalității Hardware
+
+### 3.1 Unitatea Centrală de Procesare (MCU)
+Nucleul dispozitivului este **Nordic nRF52840**. 
+* Dispune de un procesor pe 32 de biți la 64 MHz, capabil să gestioneze algoritmi complecși și procesare de semnal.
+* Utilizează un oscilator de **32 MHz** pentru operarea nucleului și a radioului.
+
+### 3.2 Energie și Alimentare
+* **LiPo Charger (BQ25180):** Gestionează procesul de încărcare al bateriei de 250mAh prin interfața USB-C.
+* **Fuel Gauge (MAX17048):** Oferă monitorizare precisă a stării de încărcare și a tensiunii bateriei.
+* **Convertor DC/DC (RT6160A):** Un convertor care transformă tensiunea variabilă a bateriei într-o tensiune stabilă de **3.3V**.
+
+### 3.3 Senzori și Interfețe de Comunicare
+* **IMU (BMA421):** Accelerometru triaxial ultra-low power folosit pentru detectarea pașilor și a gesturilor de activare a ecranului.
+* **Haptic Driver (DRV2605):** Driver specializat pentru controlul Shaker-ului.
+* **Display (Waveshare 1.54"):** O rezoluție de 200x200px. Acesta păstrează imaginea fără a consuma curent, activând circuitul de drive doar în timpul împrospătării (refresh).
+
+### 3.4 Specificații de Comunicație
+* **Protocol:** Bluetooth 5.0 Low Energy.
+* **Antenă:** Antenă 2450AT18B100E la 2.4GHz.
+
+### 3.5 Consum de Energie
+* **System OFF:** aprox. 25 µA.
+* **Standby:** aprox. 150 µA.
+* **Display Refresh:** aprox. 10 mA.
 
 ---
 
-### Randări și Layout
-*În folderul `/Images` regăsiți capturi detaliate:*
-1. **Layout 2D:** Vizualizarea rutării pe straturile Top și Bottom.
-2. **Randări 3D:** Vizualizarea finală a PCB-ului populat cu componente.
+## 4 Alocarea Pinilor nRF52840
+
+| Componentă | Interfață | Pini | Explicație |
+| :--- | :--- | :--- | :--- |
+| **I2C Bus** | I2C | P0.26 (SDA), P0.27 (SCL) | Magistrală partajată: IMU, Gauge, Haptic, Charger. |
+| **E-Paper** | SPI | P0.20 (SCK), P0.24 (MOSI), P0.22 (MISO) | Interfață pentru datele de imagine. |
+| **E-Paper Ctrl** | GPIO | P0.17 (CS), P0.19 (D/C), P0.13 (BUSY) | Pini dedicați pentru controlul stării driver-ului display-ului. |
+| **Buttons** | GPIO | P0.11 (UP), P0.12 (ENT), P0.25 (DN) | Configurați cu pull-up intern pentru detectarea apăsărilor. |
+| **Haptic/PWM** | PWM/I2C | P0.14 (INT/Trigger) | Declanșare hardware a efectelor haptice. |
+| **SWD** | Debug | SWDIO, SWDCLK, RESET | Programare și debug via conectorul TC2030. |
+
