@@ -7,7 +7,7 @@
 ## 1. Diagramă Bloc
 
 
-
+![Block Diagram](Images/Block@20Diagram.png)
 
 ---
 
